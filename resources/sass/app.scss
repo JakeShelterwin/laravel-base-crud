@@ -1,0 +1,58 @@
+//
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito";
+
+}
+
+header {
+  background-color: green;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh / 3);
+}
+
+.centrale {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .listaCagnolini{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  height: calc(100vh / 3);
+  a {
+    text-decoration: none;
+    color: blue;
+  }
+}
+.singoloCagnolino{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh / 3);
+  span {
+    color: rgb(0, 45, 203);
+    font-weight: bold;
+  }
+}
+footer {
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh / 3);
+}
