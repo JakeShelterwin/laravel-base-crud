@@ -1,0 +1,18 @@
+header {
+  background-color: green;
+  color: white;
+}
+
+.team {
+  color: purple;
+}
+
+.team span {
+  color: blue;
+}
+
+footer {
+  background-color: red;
+  color: white;
+}
+
