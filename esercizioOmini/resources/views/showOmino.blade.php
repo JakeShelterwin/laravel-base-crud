@@ -1,21 +1,49 @@
 @extends('layouts.mainLayout')
 
 @section('content')
-  <div class="team">
-      <h1>Team Member</h1>
-      <ul>
-          <li>
-            Omino di nome
-              <span> {{$omino["firstName"]}} {{$omino["lastName"]}}</span>
-          </li>
-          <li>indirizzo: <span>{{$omino["address"]}}</span> </li>
-          <li>CAP: <span>{{$omino["code"]}}</span> </li>
-          <li>stato: <span>{{$omino["state"]}}</span> </li>
-          <li>numero di Telefono: <span>{{$omino["phoneNumber"]}}</span> </li>
-          <li>mansione: <span>{{$omino["role"]}}</span> </li>
-          <li>  Modifica <a href="{{route("editOmino",$omino["id"])}}"><i class="fas fa-user-edit"></i></a>
-          Licenzialo  <a href="{{route("deleteOmino", $omino['id'])}}"> <i class='fas fa-times'></i> </a> </li>
+  <div class="teamMember">
+      <h1>Team Member </h1>
+      @if (session("success"))
+        <p>{{session("success")}}</p>
+      @endif
 
-      </ul>
+      <table>
+        <tbody>
+          <tr>
+            <td><span>Nome</span></td>
+            <td>{{$omino["firstName"]}} {{$omino["lastName"]}}</td>
+          </tr>
+          <tr>
+            <td><span>Indirizzo</span></td>
+            <td>{{$omino["address"]}}</td>
+          </tr>
+          <tr>
+            <td><span>CAP</span></td>
+            <td>{{$omino["code"]}}</td>
+          </tr>
+          <tr>
+            <td><span>Stato</span></td>
+            <td>{{$omino["state"]}}</td>
+          </tr>
+          <tr>
+            <td><span>Telefono</span></td>
+            <td>{{$omino["phoneNumber"]}}</td>
+          </tr>
+          <tr>
+            <td><span>Mansione</span></td>
+            <td>{{$omino["role"]}}</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="{{route('home')}}"><button type="button" name="button">Indietro</button></a>
+            </td>
+            <td class="staiADestra"><a href="{{route("editOmino",$omino["id"])}}"><button type="button" name="button">Modifica</button></a></td>
+
+          </tr>
+        </tbody>
+      </table>
+      <div class="ATTENZIONE">
+        <a href="{{route("deleteOmino", $omino['id'])}}"> <button type="button" name="button">Licenzia</button></a>
+      </div>
   </div>
 @endsection

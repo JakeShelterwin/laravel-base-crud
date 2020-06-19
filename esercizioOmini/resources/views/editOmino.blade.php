@@ -1,33 +1,55 @@
 @extends('layouts.mainLayout')
 
 @section('content')
-  <div class="team">
-      <h1>Omino <a href="{{route('showOmino', $omino['id'])}}"><i class="fas fa-long-arrow-alt-left"></i></a></h1>
+  <div class="teamMember">
+
+      <h1>Modifica Dati Dipendente</h1>
+      @if ($errors->any())
+        @foreach ($errors->all() as $error)
+          <p>{{$error}}</p>
+        @endforeach
+      @endif
+
+
       <form class="" action="{{route('updateOmino', $omino['id'])}}" method="post">
         @csrf
         @method("POST")
-        <label for="firstName">firstName</label>
-        <input type="text" name="firstName" value="{{$omino["firstName"]}}">
-        <br>
-        <label for="lastName">lastName</label>
-        <input type="text" name="lastName" value="{{$omino["lastName"]}}">
-        <br>
-        <label for="address">address</label>
-        <input type="text" name="address" value="{{$omino["address"]}}">
-        <br>
-        <label for="code">code</label>
-        <input type="text" name="code" value="{{$omino["code"]}}">
-        <br>
-        <label for="state">state</label>
-        <input type="text" name="state" value="{{$omino["state"]}}">
-        <br>
-        <label for="phoneNumber">phoneNumber</label>
-        <input type="text" name="phoneNumber" value="{{$omino["phoneNumber"]}}">
-        <br>
-        <label for="role">role</label>
-        <input type="text" name="role" value="{{$omino["role"]}}">
-        <br>
-        <button type="submit" name="submit">Submit</button>
+        <table>
+        <tbody>
+          <tr>
+            <td><label for="firstName">Nome</label></td>
+            <td><input type="text" name="firstName" value="{{old('firstName', $omino['firstName'])}}"></td>
+          </tr>
+          <tr>
+            <td><label for="lastName">Cognome</label></td>
+            <td><input type="text" name="lastName" value="{{old("lastName", $omino['lastName'])}}"></td>
+          </tr>
+          <tr>
+            <td><label for="address">Indirizzo</label></td>
+            <td><input type="text" name="address" value="{{old("address", $omino['address'])}}"></td>
+          </tr>
+          <tr>
+            <td><label for="code">CAP</label></td>
+            <td><input type="text" name="code" value="{{old("code", $omino['code'])}}"></td>
+          </tr>
+          <tr>
+            <td><label for="state">Stato</label></td>
+            <td><input type="text" name="state" value="{{old("state", $omino['state'])}}"></td>
+          </tr>
+          <tr>
+            <td><label for="phoneNumber">Telefono</label></td>
+            <td><input type="text" name="phoneNumber" value="{{old("phoneNumber", $omino['phoneNumber'])}}"></td>
+          </tr>
+          <tr>
+            <td><label for="role">Ruolo</label></td>
+            <td><input type="text" name="role" value="{{old("role", $omino['role'])}}"></td>
+          </tr>
+          <tr>
+            <td><a href="{{route('showOmino', $omino['id'])}}"><button type="button" name="button">Indietro</button></a></td>
+            <td><button type="submit" name="submit">Salva</button></td>
+          </tr>
+        </tbody>
+      </table>
       </form>
   </div>
 @endsection

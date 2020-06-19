@@ -16,7 +16,11 @@
     </head>
     <body>
       @include('components.header')
-      @yield('content')
+      <main>
+        <div class="container">
+          @yield('content')
+        </div>
+      </main>
       @include('components.footer')
     </body>
 </html>

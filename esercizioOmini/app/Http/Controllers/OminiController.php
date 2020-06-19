@@ -17,11 +17,6 @@ class OminiController extends Controller
       return view('showOmino', compact("omino"));
     }
 
-    // modifica omino
-    public function edit($id){
-      $omino = Omino::findOrFail($id);
-      return view('editOmino', compact("omino"));
-    }
 
     // licenzia Omino
     public function delete($id){
@@ -30,8 +25,23 @@ class OminiController extends Controller
       return redirect() -> route("home");
     }
 
+    // modifica omino
+    public function edit($id){
+      $omino = Omino::findOrFail($id);
+      return view('editOmino', compact("omino"));
+    }
+
     public function update(Request $request, $id){
-      $ominoData = $request->all();
+      // $ominoData = $request->all();
+      $ominoData = $request -> validate([
+          'firstName' => "required|alpha",
+          'lastName' => "required",
+          'address' => "required",
+          'code' => "required",
+          'state' => "required",
+          'phoneNumber' => "required",
+          'role' => "required"
+      ]);
 
       $omino = Omino::findOrFail($id);
 
@@ -45,7 +55,8 @@ class OminiController extends Controller
 
       $omino -> save();
 
-      return redirect() -> route("showOmino", $omino["id"]);
+      return redirect() -> route("showOmino", $id)
+                        -> withSuccess("Utente ".$omino["firstName"]." ".$omino["lastName"].' correttamente aggiornato');
     }
 
     // aggiungi omino
@@ -55,7 +66,17 @@ class OminiController extends Controller
 
     public function store(Request $request){
 
-      $ominoData = $request->all();
+      // $ominoData = $request->all();
+
+      $ominoData = $request -> validate([
+          'firstName' => "required|alpha",
+          'lastName' => "required",
+          'address' => "required",
+          'code' => "required",
+          'state' => "required",
+          'phoneNumber' => "required",
+          'role' => "required"
+      ]);
 
       $omino= new Omino;
 
@@ -69,6 +90,7 @@ class OminiController extends Controller
 
       $omino -> save();
 
-      return redirect() -> route("home");
+      return redirect() -> route("home")
+                        -> withSuccess("Utente ".$omino["firstName"]." ".$omino["lastName"].' correttamente creato');
     }
 }

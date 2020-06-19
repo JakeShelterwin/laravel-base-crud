@@ -1,33 +1,53 @@
 @extends('layouts.mainLayout')
 
 @section('content')
-  <div class="team">
-      <h1>Omino</h1>
+  <div class="teamMember">
+      <h1>Aggiungi Dati Dipendente</h1>
+      @if ($errors->any())
+        @foreach ($errors->all() as $error)
+          <p>{{$error}}</p>
+        @endforeach
+      @endif
       <form class="" action="{{route('storeOmino')}}" method="post">
         @csrf
         @method("POST")
-        <label for="firstName">firstName</label>
-        <input type="text" name="firstName" value="">
-        <br>
-        <label for="lastName">lastName</label>
-        <input type="text" name="lastName" value="">
-        <br>
-        <label for="address">address</label>
-        <input type="text" name="address" value="">
-        <br>
-        <label for="code">code</label>
-        <input type="text" name="code" value="">
-        <br>
-        <label for="state">state</label>
-        <input type="text" name="state" value="">
-        <br>
-        <label for="phoneNumber">phoneNumber</label>
-        <input type="text" name="phoneNumber" value="">
-        <br>
-        <label for="role">role</label>
-        <input type="text" name="role" value="">
-        <br>
-        <button type="submit" name="submit">Submit</button>
+        <table>
+        <tbody>
+          <tr>
+            <td><label for="firstName">Nome</label></td>
+            <td><input type="text" name="firstName" value="{{old("firstName")}}"></td>
+          </tr>
+          <tr>
+            <td><label for="lastName">Cognome</label></td>
+            <td><input type="text" name="lastName" value="{{old("lastName")}}"></td>
+          </tr>
+          <tr>
+            <td><label for="address">Indirizzo</label></td>
+            <td><input type="text" name="address" value="{{old("address")}}"></td>
+          </tr>
+          <tr>
+            <td><label for="code">CAP</label></td>
+            <td><input type="text" name="code" value="{{old("code")}}"></td>
+          </tr>
+          <tr>
+            <td><label for="state">Stato</label></td>
+            <td><input type="text" name="state" value="{{old("state")}}"></td>
+          </tr>
+          <tr>
+            <td><label for="phoneNumber">Telefono</label></td>
+            <td><input type="text" name="phoneNumber" value="{{old("phoneNumber")}}"></td>
+          </tr>
+          <tr>
+            <td><label for="role">Mansione</label></td>
+            <td><input type="text" name="role" value="{{old("role")}}"></td>
+          </tr>
+          <tr>
+            <td><a href="{{route('home')}}"><button type="button" name="button">Indietro</button></a></td>
+            <td><button type="submit" name="submit">Salva</button></td>
+          </tr>
+        </tbody>
+      </table>
+
       </form>
   </div>
 @endsection

@@ -2,15 +2,19 @@
 
 @section('content')
   <div class="team">
-      <h1>Team</h1>
+      @if (session("success"))
+        <p>{{session("success")}}</p>
+      @endif
+      <h3>
+        <a href="{{route("createOmino")}}">Aggiungi Dipendente</a>
+      </h3>
       <ul>
-        <li>
-          <a href="{{route("createOmino")}}">Aggiungi Omino</a>
-        </li>
         @foreach ($omini as $omino)
           <li>
-            <p>Omino di nome
-              <span> {{$omino["firstName"]}} {{$omino["lastName"]}}</span> telefono <span>{{$omino["phoneNumber"]}}</span>  <a href="{{route("showOmino",$omino["id"] )}}">vedi dettagli</a></p> 
+            <p>Dipendente <br>
+              <span> {{$omino["firstName"]}} {{$omino["lastName"]}}</span> <br> Ruolo <br> <span>{{$omino["role"]}}</span><br>
+              <a href="{{route('showOmino', $omino['id'])}}"><button type="button" name="button">Dettagli Dipendente</button></a>
+            </p>
           </li>
         @endforeach
       </ul>
